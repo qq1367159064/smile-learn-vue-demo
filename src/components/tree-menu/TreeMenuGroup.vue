@@ -1,5 +1,7 @@
 <template>
-  <div class="tree-menu-group"></div>
+  <div class="tree-menu-group">
+    
+  </div>
 </template>
 
 <script>

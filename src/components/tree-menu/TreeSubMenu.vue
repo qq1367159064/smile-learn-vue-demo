@@ -1,7 +1,12 @@
 <template>
   <div class="tree-submenu">
-    <slot name="title"></slot>
-    <slot></slot>
+    <div class="tree-submenu-title">
+      <slot name="title"></slot>
+      <svg-icon icon-class="category"/>
+    </div>
+    <div class="tree-submenu-content">
+      <slot></slot>
+    </div>
   </div>
 </template>
 

@@ -1,21 +1,12 @@
 <template>
   <div class="tree-menu-wrapper">
-    <TreeMenuItem
-      :currentIndex="currentIndex"
-      :menuItem="item"
-      @artiveHandle="artiveHandle"
-      v-for="item in categoryList"
-      :key="item.categoryId"
-    />
   </div>
 </template>
 
 <script>
-import TreeMenuItem from "./TreeMenuItem";
 export default {
   name: "ThreeMenuWrapper",
   components: {
-    TreeMenuItem,
   },
   data() {
     return {
@@ -30,6 +21,28 @@ export default {
               categoryTitle: "子目录1",
               categoryId: 1,
               parentId: 1,
+              children: [
+                {
+                  categoryTitle: "子目录2",
+                  categoryId: 11,
+                  parentId: 1,
+                },
+                {
+                  categoryTitle: "子目录2",
+                  categoryId: 21,
+                  parentId: 1,
+                },
+                {
+                  categoryTitle: "子目录2",
+                  categoryId: 31,
+                  parentId: 1,
+                },
+                {
+                  categoryTitle: "子目录2",
+                  categoryId: 41,
+                  parentId: 1,
+                },
+              ],
             },
             {
               categoryTitle: "子目录1",
@@ -80,8 +93,8 @@ export default {
   },
   methods: {
     artiveHandle(id) {
-      this.currentIndex = id
-    }
+      this.currentIndex = id;
+    },
   },
 };
 </script>

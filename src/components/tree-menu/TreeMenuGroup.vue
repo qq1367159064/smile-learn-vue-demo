@@ -1,42 +1,16 @@
 <template>
-  <div class="tree-menu-group">
-    <div class="tree-menu-group-title" @click="showChildenHandle">
-      <slot name="title"></slot>
-      <svg-icon
-        icon-class="rightarrows"
-        :class="{ activeIcon: showChilden }"
-        class="svg-icon"
-      />
-    </div>
-    <CollapseTransition>
-      <div class="tree-menu-group-content" v-show="showChilden">
-        <slot></slot>
-      </div>
-    </CollapseTransition>
-  </div>
+  <div class="tree-menu-group"></div>
 </template>
 
 <script>
-import CollapseTransition from "./collapse-transition";
 export default {
   name: "TreeMenuGroup",
-  props: {
-    direction: {
-      type: String,
-      default: "vertical",
-    },
-  },
-  components: { CollapseTransition },
+  props: {},
+  components: {},
   data() {
-    return {
-      showChilden: false,
-    };
+    return {};
   },
-  methods: {
-    showChildenHandle() {
-      this.showChilden = !this.showChilden;
-    },
-  },
+  methods: {},
 };
 </script>
 
@@ -49,6 +23,7 @@ export default {
   .tree-menu-group-title {
     display: flex;
     align-items: center;
+    border: 0px solid red;
     .svg-icon {
       transition: 0.3s;
     }

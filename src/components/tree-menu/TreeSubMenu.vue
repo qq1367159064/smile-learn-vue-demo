@@ -1,26 +1,24 @@
 <template>
   <div class="tree-submenu">
-    
+    <slot name="title"></slot>
+    <slot></slot>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'TreeSubMenu',
-  components: {
-
+  name: "TreeSubMenu",
+  index: {
+    type: [Number, String],
+    default: 0,
   },
+  components: {},
   data() {
-    return {
-
-    }
+    return {};
   },
-  methods: {
-
-  }
-}
+  methods: {},
+};
 </script>
 
 <style lang="less" scoped>
-
 </style>

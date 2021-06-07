@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="<%= VUE_APP_ICON_PATH %>favicon.ico">
+  <link rel="icon" href="./favicon.ico">
+  <title>
+    <%= htmlWebpackPlugin.options.title %>
+  </title>
+</head>
+<style lang="css">
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: arial;
+  }
+
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #07252d;
+  }
+
+  h2 {
+    position: relative;
+    font-size: 6em;
+    letter-spacing: 15px;
+    color: #0e3742;
+    text-transform: uppercase;
+    text-align: center;
+    -webkit-box-reflect: below 1px linear-gradient(transparent, #0008);
+    line-height: 0.7em;
+    outline: none;
+    animation: animate 5s linear infinite;
+  }
+
+  @keyframes animate {
+
+    0%,
+    18%,
+    20%,
+    50.1%,
+    60%,
+    65.1%,
+    80%,
+    90.1%,
+    92% {
+      color: #0e3742;
+    }
+
+    18.1%,
+    20.1%,
+    50.1%,
+    60%,
+    65.1%,
+    80%,
+    90.1%,
+    100% {
+      color: #fff;
+      text-shadow: 0 0 10px #03bcf4,
+        0 0 20px #03bcf4,
+        0 0 40px #03bcf4,
+        0 0 80px #03bcf4,
+        0 0 160px #03bcf4;
+    }
+  }
+</style>
+
+<body>
+  <script async size="90" alpha="0.2" zIndex="0"
+    src="https://smilemall-zg.oss-cn-beijing.aliyuncs.com/smile-blog/js/ribbon.js"></script>
+  <noscript>
+    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
+        Please enable it to continue.</strong>
+  </noscript>
+  <div id="article">
+    <h2 contenteditable="true">Loading...</h2>
+  </div>
+  <!-- built files will be auto injected -->
+</body>
+
+</html>

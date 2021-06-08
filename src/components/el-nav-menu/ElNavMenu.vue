@@ -1,19 +1,29 @@
 <template>
-  <div class="tree-menu-wrapper">
-    <slot></slot>
+  <div class="">
+    <el-menu
+      default-active="2"
+      class="el-menu-vertical-demo"
+      @open="handleOpen"
+      @close="handleClose"
+    >
+      <NavItem v-for="(item, index) in categoryList" :key="index" :item="item"/>
+    </el-menu>
   </div>
 </template>
 
 <script>
-
-
+import { Menu, Submenu, MenuItem, MenuItemGroup } from "element-ui";
+import Vue from "vue";
+Vue.use(Menu);
+Vue.use(Submenu);
+Vue.use(MenuItem);
+Vue.use(MenuItemGroup);
+import NavItem from "./CateNavItem.vue"
 export default {
-  name: "ThreeMenuWrapper",
-  components: {
-  },
+  name: "ElNavMenu",
+  components: { NavItem },
   data() {
     return {
-      currentIndex: 0,
       categoryList: [
         {
           categoryTitle: "父目录1",
@@ -94,25 +104,9 @@ export default {
       ],
     };
   },
-  methods: {
-    artiveHandle(id) {
-      this.currentIndex = id;
-    },
-  },
+  methods: {},
 };
 </script>
 
-<style lang="less">
-.activeStatus {
-  color: #4386f4;
-}
-</style>
 <style lang="less" scoped>
-.tree-menu-wrapper {
-  user-select: none;
-  display: flex;
-  flex: 1;
-  border: 0px solid blue;
-  flex-direction: column;
-}
 </style>

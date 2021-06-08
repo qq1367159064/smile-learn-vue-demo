@@ -1,5 +1,5 @@
 <template>
-  <div class="tree-menu-item">
+  <div class="tree-menu-item menu-item finger">
     <slot></slot>
   </div>
 </template>
@@ -28,11 +28,7 @@ export default {
 
 <style lang="less" scoped>
 .tree-menu-item {
-  display: flex;
-  align-items: center;
-
-  .only-note {
-    border: 0px solid red;
-  }
+  // display: flex;
+  // align-items: center;
 }
 </style>

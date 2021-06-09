@@ -10,9 +10,19 @@
         </template>
         <MenuItem>导航3</MenuItem>
         <MenuItem>导航3</MenuItem>
-        <MenuItem>导航3</MenuItem>
+        <MenuItem>
+          <MenuSub>
+            <template slot="title">
+              <MenuItem>导航5</MenuItem>
+            </template>
+            <MenuItem>导航3</MenuItem>
+            <MenuItem>导航3</MenuItem>
+            <MenuItem>导航3</MenuItem>
+          </MenuSub>
+        </MenuItem>
       </MenuSub>
     </ThreeMenu>
+    <!-- <elMenu /> -->
   </div>
 </template>
 
@@ -23,6 +33,7 @@ export default {
     ThreeMenu: () => import("@/components/tree-menu/TreeMenuWrapper"),
     MenuItem: () => import("@/components/tree-menu/TreeMenuItem.vue"),
     MenuSub: () => import("@/components/tree-menu/TreeSubMenu.vue"),
+    // elMenu: () => import("@/components/el-nav-menu/ElNavMenu.vue")
   },
   data() {
     return {};

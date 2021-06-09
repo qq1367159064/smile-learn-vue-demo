@@ -1,8 +1,7 @@
 <template>
   <div class="tree-submenu finger">
-    <div class="tree-submenu-title" @click="showChildrenHandle">
+    <div class="tree-submenu-title menu-item" @click="showChildrenHandle">
       <slot name="title"></slot>
-      <svg-icon icon-class="rightarrows" class="svg-icon" :class="{activeIcon: showChildren}" />
     </div>
     <div class="tree-submenu-content">
       <CollapseTransition>
@@ -20,6 +19,13 @@ export default {
   index: {
     type: [Number, String],
     default: 0,
+  },
+  offSet: {
+    type: Number,
+    default: 2,
+  },
+  mounted() {
+
   },
   components: {
     CollapseTransition: () => import("./collapse-transition"),
@@ -47,19 +53,8 @@ export default {
   .tree-submenu-title {
     display: flex;
     align-items: center;
-    padding-right: 10rem;
     width: 100%;
-
-    .svg-icon {
-      transition: 0.3s;
-    }
-    .activeIcon {
-      transform: rotate(90deg);
-      -ms-transform: rotate(90deg); /* IE 9 */
-      -moz-transform: rotate(90deg); /* Firefox */
-      -webkit-transform: rotate(90deg); /* Safari 和 Chrome */
-      -o-transform: rotate(90deg);
-    }
+  
   }
   .tree-submenu-content {
     display: flex;
@@ -67,6 +62,7 @@ export default {
     align-items: center;
     width: 100%;
     border: 0px solid red;
+
     .sub-animation {
       display: flex;
       flex-direction: column;

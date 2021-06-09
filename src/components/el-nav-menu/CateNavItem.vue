@@ -1,21 +1,24 @@
 <template>
   <div>
     <template v-if="!item.children || item.children.length === 0">
-      <app-link  :to="resolvePath(item.categoryId)">
-        <el-menu-item >
-          <item :icon="item.icon||(item.icon&&item.icon)" :title="item.cateogryTitle" />
-        </el-menu-item>
-      </app-link>
+      <el-menu-item :index="item.categoryId + ''">
+        <item
+          :icon="item.icon === undefined ? '' : item.icon"
+          :title="item.categoryTitle"
+        />
+      </el-menu-item>
     </template>
 
-    <el-submenu v-else ref="subMenu"  popper-append-to-body>
+    <el-submenu v-else ref="subMenu" :index="item.cateogryId + ''" popper-append-to-body>
       <template slot="title">
-        <item v-if="item.categoryTitle" :icon="item.icon && icon" :title="item.categoryTitle" />
+        <item
+          :icon="item.icon === undefined ? '' : item.icon"
+          :title="item.categoryTitle"
+        />
       </template>
       <NavbarItem
         v-for="child in item.children"
         :key="child.categoryId"
-        :is-nest="true"
         :item="child"
         class="nest-menu"
       />
@@ -24,43 +27,23 @@
 </template>
 
 <script>
-import path from 'path'
-import { isExternal } from '@/utils/validate'
-import Item from './Item'
-import AppLink from './Link'
+import Item from "./Item";
 
 export default {
-  name: 'NavbarItem',
-  components: { Item, AppLink },
+  name: "NavbarItem",
+  components: { Item },
   props: {
-    // route object
     item: {
       type: Object,
-      required: true
-    },
-    isNest: {
-      type: Boolean,
-      default: false
-    },
-    basePath: {
-      type: String,
-      default: ''
+      required: true,
+      
     }
   },
   data() {
-    return {}
+    return {};
   },
   methods: {
-  
-    resolvePath(routePath) {
-      if (isExternal(routePath)) {
-        return routePath
-      }
-      if (isExternal(this.basePath)) {
-        return this.basePath
-      }
-      return path.resolve(this.basePath, routePath)
-    }
-  }
-}
+
+  },
+};
 </script>

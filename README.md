@@ -1,4 +1,4 @@
-# smile-learn-demo
+# smile-learn-demo1
 
 ## Project setup
 ```

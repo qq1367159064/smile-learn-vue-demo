@@ -7,6 +7,13 @@ module.exports = {
   publicPath: "/",
   outputDir: "dist",
   assetsDir: "public",
+  lintOnSave: false,
+  devServer: {
+    overlay: {
+      warnings: true,
+      errors: true
+    }
+  },
 
   chainWebpack: (config) => {
     config.resolve.alias

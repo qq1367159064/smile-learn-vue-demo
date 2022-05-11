@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+  <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" />
+  <title>地图显示</title>
+  <style>
+    html,
+    body,
+    #container {
+      width: 100%;
+      height: 100%;
+    }
+
+    .info {
+      width: 26rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container"></div>
+
+  <div class="info">
+    <h4 id='status'></h4>
+    <hr>
+    <p id='result'></p>
+    <hr>
+    <p>由于众多浏览器已不再支持非安全域的定位请求，为保位成功率和精度，请升级您的站点到HTTPS。</p>
+  </div>
+  <!-- 加载地图JSAPI脚本 -->
+  <script
+    src="https://webapi.amap.com/maps?v=1.4.15&key=9ab76183b146881b4b3dbeede850d8ad&plugin=AMap.PlaceSearch,AMap.AdvancedInfoWindow"></script>
+  <!--  <script>
+
+    let map = new AMap.Map('container', {
+      resizeEnable: true, //是否监控地图容器尺寸变化
+      isHotspot: true,
+
+    });
+
+
+    map.plugin(["AMap.ToolBar"], function () {
+      map.addControl(new AMap.ToolBar());
+    });
+
+    var placeSearch = new AMap.PlaceSearch();  //构造地点查询类
+    var infoWindow = new AMap.AdvancedInfoWindow({});
+
+    /*map.on('hotspotover', function (result) {
+      placeSearch.getDetails(result.id, function (status, result) {
+        if (status === 'complete' && result.info === 'OK') {
+          placeSearch_CallBack(result);
+        }
+        });
+       }); */
+
+    //回调函数
+    function placeSearch_CallBack(data) { //infoWindow.open(map, result.lnglat);
+      var poiArr = data.poiList.pois;
+      var location = poiArr[0].location;
+      infoWindow.setContent(createContent(poiArr[0]));
+      infoWindow.open(map, location);
+    }
+
+    function createContent(poi) {  //信息窗体内容
+      var s = [];
+      s.push('<div class="info-title">' + poi.name + '</div><div class="info-content">' + "地址：" + poi.address);
+      s.push("电话：" + poi.tel);
+      s.push("类型：" + poi.type);
+      s.push('<div>');
+      return s.join("<br>");
+    }
+
+
+
+  </script> -->
+
+  <!--  <script>
+
+    window.onload = () => {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        do_something(position.coords.latitude, position.coords.longitude);
+      });
+    }
+
+    function do_something(value1, value2) {
+      console.log(value1)
+      console.log(value2)
+    }
+
+
+
+    var map = new AMap.Map('container', {
+      resizeEnable: true
+    });
+    AMap.plugin('AMap.Geolocation', function () {
+      var geolocation = new AMap.Geolocation({
+        enableHighAccuracy: true,//是否使用高精度定位，默认:true
+        timeout: 10000,          //超过10秒后停止定位，默认：5s
+        buttonPosition: 'RB',    //定位按钮的停靠位置
+        buttonOffset: new AMap.Pixel(10, 20),//定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
+        zoomToAccuracy: true,   //定位成功后是否自动调整地图视野到定位点
+
+      });
+      map.addControl(geolocation);
+      geolocation.getCurrentPosition(function (status, result) {
+        if (status == 'complete') {
+          onComplete(result)
+        } else {
+          onError(result)
+        }
+      });
+    });
+    //解析定位结果
+    function onComplete(data) {
+      document.getElementById('status').innerHTML = '定位成功'
+      var str = [];
+      str.push('定位结果：' + data.position);
+      str.push('定位类别：' + data.location_type);
+      if (data.accuracy) {
+        str.push('精度：' + data.accuracy + ' 米');
+      }//如为IP精确定位结果则没有精度信息
+      str.push('是否经过偏移：' + (data.isConverted ? '是' : '否'));
+      document.getElementById('result').innerHTML = str.join('<br>');
+    }
+    //解析定位错误信息
+    function onError(data) {
+      document.getElementById('status').innerHTML = '定位失败'
+      document.getElementById('result').innerHTML = '失败原因排查信息:' + data.message;
+    }
+  </script> -->
+
+  <script>
+    const map = null;
+    window.onload = () => {
+      map = new AMap.Map('container', {
+        zoom: 13
+      });
+    }
+    
+    function breowerP() {
+      if ("geolocation" in navigator) {
+        alert("当前浏览器不支持，定位，可能导致定位不准确")
+      } else {
+        
+      }
+      navigator.geolocation.getCurrentPosition(geo_success, geo_error);
+    }
+
+    function geo_success(position) {
+
+
+      var marker = new AMap.Marker({
+        //复杂图标
+        icon: new AMap.Icon({
+          //图标大小
+          size: new AMap.Size(28, 37),
+          //大图地址
+          image: "http://webapi.amap.com/images/custom_a_j.png",
+          imageOffset: new AMap.Pixel(-28, 0)
+        }),
+        //在地图上添加点
+        position: [position.coords.longitude, position.coords.latitude]
+      });
+
+      marker.setMap(map);
+    }
+
+    function geo_error(msg) {
+
+    }
+  </script>
+</body>
+
+</html>
